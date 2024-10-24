@@ -1,0 +1,132 @@
+11b：
+iwpriv vap0 alg "tpc_mode 1"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1          #设置频点，2G 1~13
+iwpriv vap0 mode 11ax2g20    #设置带宽模式20M时为11ax2g20，40M时为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 0 0"
+iwpriv vap0 alg "ucast_data preamble_type long"
+iwpriv vap0 rate 1                #设置速率,11b可选为1,2,5.5,11
+iwpriv vap0 bw 20            #设置带宽,2G为20/40
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001       #设置通道 0001表示C0，0010表示C1，0011表示双通道
+iwpriv vap0 al_tx "1 10 2 100 0"     #打开常发，100为包长11b包长不超过1000
+长发下继续调整功率， 11b：
+iwpriv vap0 alg "power_cali 10" #下发功率差值命令步进0.1dB，正值为降低，负值为增加,单次调整不要超过100
+iwpriv vap0 alg "power_cali -10" #下发功率差值命令步进0.1dB，正值为降低，负值为增加
+
+
+11g：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1				
+iwpriv vap0 mode 11ax2g20
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 rate 6            #设置速率,11G可选为6,9,12,18,24,36,48,54
+iwpriv vap0 bw 20
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8"    #设置tpc_code，ofdm：0~63，寄存器值越大功率越小，OFDM步进约0.5dB
+iwpriv vap0 al_tx "1 10 2 1500 0"  #1500为包长
+
+长发下继续调整功率，其他11b外速率操作相同：
+iwpriv vap0 alg "al_tx 0"
+iwpriv vap0 alg "tpc_code ofdm 0 16"    #设置tpc_code，ofdm：0~63，寄存器值越大功率越小，OFDM步进约0.5dB
+iwpriv vap0 al_tx "1 10 2 1500 0"
+
+11n：
+20M：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1			
+iwpriv vap0 mode 11ax2g20    #设置带宽模式20M为11ax2g20，40M为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 mcs 0            #设置速率,11n可选0~7
+iwpriv vap0 bw 20
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8" 
+iwpriv vap0 al_tx "1 10 2 1500 0"
+
+40M：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1			
+iwpriv vap0 mode 11ax2g40plus  #设置带宽模式20M为11ax2g20，40M为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 mcs 0            #设置速率,11n可选0~7
+iwpriv vap0 bw 40
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8" 
+iwpriv vap0 al_tx "1 10 2 1500 0"
+
+11ac：
+20M：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1				
+iwpriv vap0 mode 11ax2g20    #设置带宽模式20M为11ax2g20，40M为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 mcsac 0            #设置速率,11ac可选0~9
+iwpriv vap0 bw 20
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8" 
+iwpriv vap0 al_tx "1 10 2 1500 0"
+40M：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1				
+iwpriv vap0 mode 11ax2g40plus    #设置带宽模式20M为11ax2g20，40M为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 mcsac 0            #设置速率,11ac可选0~9
+iwpriv vap0 bw 40
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8" 
+iwpriv vap0 al_tx "1 10 2 1500 0"
+
+
+11ax：
+20M：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1			
+iwpriv vap0 mode 11ax2g20    #设置带宽模式20M为11ax2g20，40M为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 mcsax 9            #设置速率,11ax可选0~11
+iwpriv vap0 alg "ucast_data he_ltf_type 0 4x"
+iwpriv vap0 alg "ucast_data fec_coding ldpc"
+iwpriv vap0 bw 20
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8" 
+iwpriv vap0 al_tx "1 10 2 1500 0"
+
+40M：
+iwpriv vap0 alg "tpc_mode 0"    # 0为开启2G 功率参数配置，1为关闭
+iwpriv vap0 al_tx 0
+iwpriv vap0 freq 1			
+iwpriv vap0 mode 11ax2g40plus    #设置带宽模式20M为11ax2g20，40M为11ax2g40plus
+iwpriv vap0 alg "su_sch_user 06:05:04:03:02:04"
+iwpriv vap0 alg "su_sch_tid 6 65535 20"
+iwpriv vap0 mcsax 9            #设置速率,11ax可选0~11
+iwpriv vap0 alg "ucast_data he_ltf_type 0 4x"
+iwpriv vap0 alg "ucast_data fec_coding ldpc"
+iwpriv vap0 bw 40
+iwpriv vap0 alg "txmode_mode_sw enable"
+iwpriv vap0 txch 0001
+iwpriv vap0 alg "tpc_code ofdm 0 8" 
+iwpriv vap0 al_tx "1 10 2 1500 0"
+
+
+测试完成后：
+iwpriv vap0 al_tx 0
+hipriv.sh "vap0 del_user 06:05:04:03:02:04 3"
