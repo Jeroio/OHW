@@ -1,0 +1,519 @@
+# 各种WIFI认证指标频谱仪测试操作方法和规范
+
+## 目录
+- [各种WIFI认证指标频谱仪测试操作方法和规范](#各种wifi认证指标频谱仪测试操作方法和规范)
+	- [目录](#目录)
+	- [1. 中国无委认证](#1-中国无委认证)
+		- [1.1 传导功率谱密度Conducted Power Spectral Density](#11-传导功率谱密度conducted-power-spectral-density)
+			- [1.1.1 限值要求 Requirement](#111-限值要求-requirement)
+			- [1.1.2 测试方法 Test Method](#112-测试方法-test-method)
+		- [1.2 频率范围Frequency Range](#12-频率范围frequency-range)
+			- [1.2.1 限值要求 Requirement](#121-限值要求-requirement)
+			- [1.2.2 测试方法 Test Method](#122-测试方法-test-method)
+		- [1.3 占用带宽Occupied Bandwidth](#13-占用带宽occupied-bandwidth)
+			- [1.3.1 限值要求 Requirement](#131-限值要求-requirement)
+			- [1.3.2 测试方法 Test Method](#132-测试方法-test-method)
+		- [1.4 传导射频杂散Conducted RF Spurious Emission](#14-传导射频杂散conducted-rf-spurious-emission)
+			- [1.4.1 限值要求 Requirement](#141-限值要求-requirement)
+			- [1.4.2 测试方法 Test Method](#142-测试方法-test-method)
+	- [2. CE认证](#2-ce认证)
+		- [2.1 传导功率谱密度Conducted Power Spectral Density](#21-传导功率谱密度conducted-power-spectral-density)
+			- [2.1.1 限值要求 Requirement](#211-限值要求-requirement)
+			- [2.1.2 测试方法 Test Method](#212-测试方法-test-method)
+		- [2.2 频率范围Frequency Range](#22-频率范围frequency-range)
+			- [2.2.1 限值要求 Requirement](#221-限值要求-requirement)
+			- [2.2.2 测试方法 Test Method](#222-测试方法-test-method)
+		- [2.3 传导射频杂散Conducted RF Spurious Emission](#23-传导射频杂散conducted-rf-spurious-emission)
+			- [2.3.1 限值要求 Requirement](#231-限值要求-requirement)
+			- [2.3.2 测试方法 Test Method](#232-测试方法-test-method)
+	- [3. FCC认证](#3-fcc认证)
+
+---
+
+## 1. 中国无委认证
+
+### 1.1 传导功率谱密度Conducted Power Spectral Density
+
+#### 1.1.1 限值要求 Requirement
+中国无委
+
+#### 1.1.2 测试方法 Test Method
+NOTE 1：测试方法按照“中国无委WIFI标准及测试规范”
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗，校准频率范围应覆盖2400MHz到2483.5MHz。  
+   Connect the test system according to the following figure. Perform RF tests path calibration according to “Self-calibration method of Passive network” and the frequency coverage is from 2400MHz to 2483.5MHz.
+   
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch7(2442MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch7(2442MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，2Mbps，5.5Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，9Mbps，12Mbps，18Mbps，24Mbps，36Mbps，48Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, ……, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , ……, MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 100M |
+   | RBW              | 1MHz |
+   | VBW              | 10MHz |
+   | Detector         | Peak |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | Auto Couple |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+5. 保存此时的Trace数据，记做TRACEpkpd。找出TRACEpkpd的最大发射点，记录该点的频率。
+6. 以该频率点为中心频点，改变SPAN=5MHz；改变检波方式Detector->RMS；改变Sweep Time->500ms；使用MAKE的Peak点读出最大发射点TRACEpkpd，此值就是我们所需要的最大功率谱密度值。
+   
+   | Center Frequency | 第5步所得频点 |
+   |------------------|-----------------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 5M |
+   | RBW              | 1MHz |
+   | VBW              | 10MHz |
+   | Detector         | RMS |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | 500ms |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+   注意：读出来的值未计算天线增益；仪器的RF线损在仪器上补给。
+   
+7. 更改工作频点，重复以上步骤。
+8. 更改工作模式，重复以上步骤。
+9. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），各个天线端口独立测试出TRACEpkpd[1…N]，然后逐频率点进行线性相加获得总的TRACEpkpd，再进行结果处理与限值比较。
+
+### 1.2 频率范围Frequency Range
+
+#### 1.2.1 限值要求 Requirement
+中国无委  
+判定标准：fL>2.4GHz; fH <2.4835GHz
+
+#### 1.2.2 测试方法 Test Method
+NOTE 1：测试方法按照“中国无委WIFI标准及测试规范”
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗。  
+   Connect the test system according to the following figure. Perform RF tests path calibration according to “Self-calibration method of Passive network”.
+
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，2Mbps，5.5Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，9Mbps，12Mbps，18Mbps，24Mbps，36Mbps，48Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, ……, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , ……, MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 100M |
+   | RBW              | 100kHz |
+   | VBW              | 1MHz |
+   | Detector         | RMS |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | Auto |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+5. 保存此时的Trace数据，使用频谱仪器的Display lines功能，画出-30dBm电平线。
+6. 读出-30dBc处的电平线与频谱的交点频率判定是否位于频率范围内，并记录。
+
+   注意：
+   - FL 為 Ch1（40M时CH3） 峰值頻率 左移30dBc 的频率處
+   - FH 為 Ch13 （40M时候CH11）峰值頻率 右移30dBc 的频率處
+
+注意2：判定
+The difference between the frequencies measured (fH - fL) is the frequency range which shall be recorded.
+
+NOTE: For equipment with a single, fixed operating frequency, steps 1 and 4 are omitted.
+This measurement shall be repeated for each frequency range stated by the manufacturer. The results obtained shall be compared to the limits in clause 4.3.3.2 in order to prove compliance with the requirement.
+
+7. 更改工作频点，重复以上步骤。
+8. 更改工作模式，重复以上步骤。
+9. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），由于限值是相对值，各个天线端口独立测试和记录值，并与限值进行比较。
+
+### 1.3 占用带宽Occupied Bandwidth
+
+#### 1.3.1 限值要求 Requirement
+中国无委  
+判定标准：20M带宽的时候小于或等于22MHz; 40M带宽的时候小于或等于40MHz。
+
+#### 1.3.2 测试方法 Test Method
+NOTE 1：测试方法按照“中国无委WIFI标准及测试规范”
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗，校准频率范围应覆盖2400MHz到2483.5MHz。
+
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch7(2442MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch7(2442MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，2Mbps，5.5Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，9Mbps，12Mbps，18Mbps，24Mbps，36Mbps，48Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, ……, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , ……, MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 50MHz [2 ~ 2.5 times Occupied BW] |
+   | RBW              | 100kHz |
+   | VBW              | 1MHz |
+   | Detector         | RMS |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | 500ms |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+5. 保存此时的Trace数据，使用频谱仪器的Display lines功能，以工作频率的中心频率为基准，进行功率积分计算，获得所需的占用带宽。
+
+注意：上步骤中的功率能量的值，单板需经过校准并知道所测试模式下的功率值。99%功率能量概念模糊，但无委对占用带宽的限值要求挺宽松。
+
+6. 更改工作频点，重复以上步骤。
+7. 更改工作模式，重复以上步骤。
+8. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），各个天线端口独立测试和记录值，并与限值进行比较。
+
+### 1.4 传导射频杂散Conducted RF Spurious Emission
+
+#### 1.4.1 限值要求 Requirement
+中国无委
+
+#### 1.4.2 测试方法 Test Method
+NOTE 1：测试方法按照“中国无委无线测试标准及测试方法”
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗，校准频率范围应覆盖30kHz到12.75GHz。  
+   Connect the test system according to the following figure. Perform RF tests path calibration according to “Self-calibration method of Passive network”.
+
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 100M |
+   | RBW              | RBW : It depends on the band |
+   | VBW              | =RBW |
+   | Detector         | Peak |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | 500ms |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+5. 保存此时的Trace数据，记做TRACEref。  
+   Store the current trace data and record it as TRACEref.
+   
+6. 每个频段内使用频谱仪的MAKE功率找到电平最高点，记录频点和电平值。查找限值要求，看是否超标。
+   
+7. 更改工作频点，重复以上步骤。
+8. 更改工作模式，重复以上步骤。
+9. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），各个天线端口独立测试和记录值，并与限值进行比较。
+
+---
+
+## 2. CE认证
+
+### 2.1 传导功率谱密度Conducted Power Spectral Density
+
+#### 2.1.1 限值要求 Requirement
+CE认证  
+EN300328  
+4.3.2.2 Limit  
+For wide band modulations other than FHSS (e.g. DSSS, OFDM, etc.), the maximum e.i.r.p. spectral density is limited to 10 mW per MHz.
+
+#### 2.1.2 测试方法 Test Method
+NOTE 1：方法按“EN300328规范要求”
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗，校准频率范围应覆盖2400MHz到2483.5MHz。  
+   Connect the test system according to the following figure. Perform RF tests path calibration according to “Self-calibration method of Passive network” and the frequency coverage is from 2400MHz to 2483.5MHz.
+   
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch7(2442MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch7(2442MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，2Mbps，5.5Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，9Mbps，12Mbps，18Mbps，24Mbps，36Mbps，48Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, ……, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , ……, MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 100M |
+   | RBW              | 1MHz |
+   | VBW              | 1MHz |
+   | Detector         | Peak |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | Auto Couple |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+5. 保存此时的Trace数据，记做TRACEpkpd。找出TRACEpkpd的最大发射点，记录该点的频率。
+6. 以该频率点为中心频点，改变SPAN=3MHz；改变检波方式Detector->RMS；改变Sweep Time->1 minute；使用MAKE的Peak点读出最大发射点TRACEpkpd，此值就是我们所需要的最大功率谱密度值。
+
+   | Center Frequency | 第5步所得频点 |
+   |------------------|-----------------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 3M |
+   | RBW              | 1MHz |
+   | VBW              | 1MHz |
+   | Detector         | RMS |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | 1 minute |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+   注意：读出来的值未计算天线增益；仪器的RF线损在仪器上补给。
+
+7. 更改工作频点，重复以上步骤。
+8. 更改工作模式，重复以上步骤。
+9. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），各个天线端口独立测试出TRACEpkpd[1…N]，然后逐频率点进行线性相加获得总的TRACEpkpd，再进行结果处理与限值比较。
+
+### 2.2 频率范围Frequency Range
+
+#### 2.2.1 限值要求 Requirement
+CE认证  
+EN300328
+
+#### 2.2.2 测试方法 Test Method
+NOTE 1：方法按“EN300328规范要求”
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗，校准频率范围应覆盖2400MHz到2483.5MHz。  
+   Connect the test system according to the following figure. Perform RF tests path calibration according to “Self-calibration method of Passive network” and the frequency coverage is from 2400MHz to 2483.5MHz.
+   
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，2Mbps，5.5Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，9Mbps，12Mbps，18Mbps，24Mbps，36Mbps，48Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, ……, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , ……, MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 100M |
+   | RBW              | 100kHz |
+   | VBW              | 100kHz |
+   | Detector         | RMS |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | 1 minute |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+   
+5. 保存此时的Trace数据，使用频谱仪器的Display lines功能，画出电平=-30dBm的线。
+6. 读出-30dBm处的电平线与频谱的交点频率，判定是否位于频率范围内，利用频谱仪的MAKE功能记录-30dBm附近处主频的频率点和电平值。
+
+   注意：
+   - FL 為 Ch1（40M时CH3） 峰值频率左移30dBm的频率处。
+   - FH 為 Ch13 （40M时候CH11）峰值频率右移30dBm的频率处。
+
+注意2：判定
+The difference between the frequencies measured (fH - fL) is the frequency range which shall be recorded.
+
+NOTE: For equipment with a single, fixed operating frequency, steps 1 and 4 are omitted.
+This measurement shall be repeated for each frequency range stated by the manufacturer. The results obtained shall be compared to the limits in clause 4.3.3.2 in order to prove compliance with the requirement.
+
+7. 更改工作频点，重复以上步骤。
+8. 更改工作模式，重复以上步骤。
+9. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），各个天线端口独立测试和记录值，并与限值进行比较。
+
+### 2.3 传导射频杂散Conducted RF Spurious Emission
+
+#### 2.3.1 限值要求 Requirement
+CE认证  
+EN300328
+
+#### 2.3.2 测试方法 Test Method
+NOTE 1：测试方法按照EN300328规范要求
+
+1. EUT开机运行30分钟，测试仪器预热30分钟。  
+   EUT is running for 30 minutes before test, and measurement instruments are warming-up for 30 minutes.
+   
+2. 按下图所示连接好测试系统。参照《无源网络自校方法》校准路径损耗，校准频率范围应覆盖30kHz到12.75GHz。  
+   Connect the test system according to the following figure. Perform RF tests path calibration according to “Self-calibration method of Passive network”.
+
+3. 设置EUT，如下表。  
+   Set up the EUT, as following table.
+   | 工作频点 | 20MHz Channel Bandwidth：Ch1(2412MHz), Ch13(2472MHz) |
+   |----------|------------------------------------------------------------|
+   |          | 40MHz Channel Bandwidth：Ch3(2422MHz), Ch11(2462MHz) |
+   
+   | 功率等级 | 最大 |
+   |----------|------|
+   
+   | 占空比  | 最大，推荐98%以上持续发射 |
+   |----------|--------------------------------|
+   
+   | 工作模式 | 802.11B: 1Mbps，11Mbps |
+   |----------|-------------------------------------------|
+   |          | 802.11G: 6Mbps，54Mbps |
+   |          | 802.11N(single chain): MCS 0, MCS 7 |
+   |          | 802.11N(multiple chains): MCS8 , MCS 15 |
+
+   | 天线端口 | 所有端口 |
+   |-----------|----------|
+   
+4. 如下表所示设置频谱分析仪。  
+   Set up the Spectrum Analyzer as following:
+   | Center Frequency | 工作频点 |
+   |------------------|----------|
+   | Ref Level Offset | 工作频点对应的路径损耗（例如：22.1dB） |
+   | Ref Level        | 30 dBm |
+   | Int Att          | Auto Couple |
+   | Span             | 100M |
+   | RBW              | 100K |
+   | VBW              | 100K |
+   | Detector         | Peak |
+   | Trace Mode       | Max Hold |
+   | Sweep Time       | 1S |
+   | Sweep Point      | Max Supported, but no less than SPAN/(0.2*RBW). |
+   | Sweep Mode       | Single |
+   | Sweep Count      | 2000 |
+
+5. 保存此时的Trace数据，记做TRACEref。  
+   Store the current trace data and record it as TRACEref.
+   
+6. 每个频段内使用频谱仪的MAKE功率找到电平最高点，记录频点和电平值。查找限值要求，看是否超标。
+7. 更改工作频点，重复以上步骤。频率覆盖到30MHz-12.75GHz。
+8. 更改工作模式，重复以上步骤。
+9. 更改天线端口，重复以上步骤。在多天线模式下（分集或MIMO等），由于限值是相对值，各个天线端口独立测试和记录值，并与限值进行比较。
+
+---
+
+## 3. FCC认证
+参考FCC射频认证测试模板。
