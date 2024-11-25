@@ -1,6 +1,11 @@
 # HW-Research-Institute
 
 内容整理为Markdown格式，并在代码块中嵌套另一个代码块，并标注代码语言
+https://www.samsung.com/hk/
+
+https://zh.wikipedia.org/
+
+https://aito.auto/
 
 3000 Line
 https://xinsheng.huawei.com/next/detail/#/index?uuid=1078027086496829440
