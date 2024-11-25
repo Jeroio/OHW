@@ -3,7 +3,8 @@
 内容整理为Markdown格式，并在代码块中嵌套另一个代码块，并标注代码语言
 
 3000 Line
-
+https://xinsheng.huawei.com/next/detail/#/index?uuid=1078027086496829440
+https://xinsheng.huawei.com/next/detail/#/index?uuid=978733615448195072
 Microsoft Copilot: 你的 AI 助手  
 
 https://copilot.microsoft.com/
