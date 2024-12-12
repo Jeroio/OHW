@@ -2,9 +2,16 @@
 
 内容整理为Markdown格式，并在代码块中嵌套另一个代码块，并标注代码语言
 
-Code:3000 Line
-
+Code:3000 Line  
+应力 wx1382518  
+周剑 wx1382524  
+张志伟 wx1382523  
+陶明 wx1382525
 ## 相关链接
+Download Visual Studio Code - Mac, Linux, Windows
+https://code.visualstudio.com/Download#
+Download Python | Python.org
+https://www.python.org/downloads/
 - [Microsoft Copilot: 你的 AI 助手](https://copilot.microsoft.com/)
 - [维基百科，自由的百科全书](https://zh.wikipedia.org/)
 - [博客园 - 开发者的网上家园](https://www.cnblogs.com/)
