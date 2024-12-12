@@ -5,15 +5,16 @@
 Code:3000 Line
 
 ## 相关链接
-
+- [Microsoft Copilot: 你的 AI 助手](https://copilot.microsoft.com/)
+- [维基百科，自由的百科全书](https://zh.wikipedia.org/)
 - [博客园 - 开发者的网上家园](https://www.cnblogs.com/)
 - [My IELTS](https://hefengxian.github.io/my-ielts/#/vocabulary)
-- [GitHub](https://github.com/)
 ------
-- [三星电子 香港 | 智能手机 | 电视 | 雪柜 洗衣机](https://www.samsung.com/hk/)
-- [维基百科，自由的百科全书](https://zh.wikipedia.org/)
+- [三星电子 香港](https://www.samsung.com/hk/)
 - [AITO 汽车 - 赛力斯华为联合设计](https://aito.auto/)
-- [Microsoft Copilot: 你的 AI 助手](https://copilot.microsoft.com/)
+- 华为商城VMALL
+https://www.vmall.com/index.html
+
 ------
 - [混合信号和数字信号处理IC | Analog Devices](https://www.analog.com/cn/index.html)
 - [Keysight 示波器](https://www.keysight.com.cn/cn/zh/products/oscilloscopes.html)
