@@ -3,7 +3,15 @@
 代码行数: 3000 行
 
 ## 相关链接
-
+https://his.huawei.com/marketplace/#/productList.html?category_code=003001
+https://tianshu.innovation.huawei.com/
+https://w3.huawei.com/next/indexa.html
+https://mindlab-y.rnd.huawei.com/#/workbench
+https://ilearning.huawei.com/edx/next/program/453215119486095360
+https://ilearning.huawei.com/edx/subsite/portal/473554429730123776?navId=473585810459881472
+https://3ms.huawei.com/km/blogs/details/15283052
+https://hefengxian.github.io/my-ielts/#/vocabulary
+https://xinsheng.huawei.com/next/detail/#/index?uuid=1043954399531560960
 - **Download Visual Studio Code - Mac, Linux, Windows**
   [https://code.visualstudio.com/Download#](https://code.visualstudio.com/Download#)
 - **Download Python | Python.org**
