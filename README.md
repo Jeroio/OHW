@@ -3,6 +3,9 @@
 代码行数: 3000 行
 
 ## 相关链接
+https://github.com/obsidianmd/obsidian-releases/releases
+
+
 https://his.huawei.com/marketplace/#/productList.html?category_code=003001
 
 https://tianshu.innovation.huawei.com/
