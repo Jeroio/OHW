@@ -8,7 +8,6 @@ B02温箱
 B01窗
 `\\10.118.126.241\d$`
 
-
 ## 相关链接
 - [华为云](https://www.huaweicloud.com/)
 - [Obsidian](https://github.com/obsidianmd/obsidian-releases/releases)
@@ -29,23 +28,7 @@ B01窗
 - [Keysight 示波器](https://www.keysight.com.cn/cn/zh/products/oscilloscopes.html)
 - [阻抗匹配与史密斯圆图](https://www.analog.com/cn/resources/technical-articles/impedance-matching-and-smith-chart-impedance-maxim-integrated.html)
 
-## Python pip 配置
 
-### 1. 查看 pip 源
-```shell
-pip config list
-```
-
-### 2. 查看 pip 源查找配置文件路径
-```bash
-pip -v config list
-```
-
-### 3. 更换 pip 源
-```bash
-pip config set global.index-url http://cmc-cd-mirror.rnd.huawei.com/pypi/simple
-pip config set global.trusted-host cmc-cd-mirror.rnd.huawei.com
-```
 
 https://his.huawei.com/marketplace/#/productList.html?category_code=003001
 

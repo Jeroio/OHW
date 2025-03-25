@@ -52,5 +52,3 @@ set bosa table 0x299F addr 0x08 len 4 value 0xca711ec2
 save optic para
 bosareset
 chipdebug print off
-
-
